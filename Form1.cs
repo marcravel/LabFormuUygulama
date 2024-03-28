@@ -20,7 +20,7 @@ namespace LabFormu
 
         private void registerBtn_Click(object sender, EventArgs e)
         {
-            /*Les codes entre ce est optionnel*/
+            /*Les codes entre ces tirets sont optionnels*/
             /*------------------------------------------------*/
             errorProvider1.Clear();
             if (nameTextBox.Text == string.Empty)
@@ -43,7 +43,7 @@ namespace LabFormu
             /*------------------------------------------------------*/
             else
             { 
-                /*Mais ce qui suit prend tout les text et les met dans la liste "list"*/
+                /*Mais ce qui suit prend tout les text de chaque composant et les met dans la liste "list"*/
                 List<string> list = new List<string>();
                 foreach(var item in this.Controls.OfType<TextBox>()) //Boucle sur tout les Composant de type TextBox (Donc: Nom, telefon...)
                 {
@@ -58,12 +58,12 @@ namespace LabFormu
                     list.Add(item.Text.ToString());
                 }
                 
-                StreamWriter file = new StreamWriter(@".\FilledForm.txt");
-                foreach(var text in list)
+                StreamWriter file = new StreamWriter(@".\FilledForm.txt"); //Creation ou ouverture du fichier FilledForm.txt
+                foreach(var text in list) //Boucle sur la liste precedement completee
                 {
-                    file.WriteLine(text.ToString());
+                    file.WriteLine(text.ToString()); //Ecriture dans le fichier
                 }
-                file.Close();
+                file.Close(); //Faut JAMAIS oublier de fermer le fichier!
                 MessageBox.Show($"File saved as FilledForm.txt", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
